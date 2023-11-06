@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "types": [
-        "../fishing-map-app-back-v2/src/types/"
+        "../fishing-map-app-back/src/types/"
       ]
     }
   }

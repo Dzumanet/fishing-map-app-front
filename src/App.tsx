@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useContext, useEffect} from 'react';
 import './App.css';
+import {BrowserRouter} from "react-router-dom";
+import {Header} from "./components/Header/Header";
+import {AppRoutes} from "./routing/AppRoutes";
+import {Context} from "./provider/Provider";
+import {API_ENDPOINTS} from "./api/endpoints";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export const App = () => {
+    const {setLogin} = useContext(Context);
+
+    useEffect(() => {
+        const logIn = async () => {
+            const response = await fetch(API_ENDPOINTS.CHECK, {
+                method: "GET",
+                headers: {"Content-Type": "application/json"},
+                credentials: "include",
+            });
+            const data = await response.json();
+            if (data.loggedIn) {
+                setLogin(true);
+            }
+        };
+
+        logIn();
+    });
+
+
+    return (
+        <>
+            <BrowserRouter>
+                <Header/>
+                <AppRoutes/>
+            </BrowserRouter>
+        </>
+    );
 }
 
-export default App;

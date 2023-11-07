@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {Context} from "../provider/Provider";
+import {LoginCheckContext} from "../provider/Provider";
 import {Route, Routes} from "react-router-dom";
 import {UserMap} from "../views/User/UserMap/UserMap";
 import {UserFish} from "../views/User/UserFish/UserFish";
@@ -7,7 +7,7 @@ import {AddFishForm} from "../components/Forms/AddFish/AddFishForm";
 import {Map} from "../components/Map/Map";
 
 export const AppRoutes = () => {
-    const {login} = useContext(Context);
+    const {login} = useContext(LoginCheckContext);
 
     return (
         <Routes>

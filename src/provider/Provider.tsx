@@ -1,6 +1,6 @@
 import {createContext, PropsWithChildren, useState} from "react";
 
-export const Context = createContext<null | string | any >(null);
+export const LoginCheckContext = createContext<null | string | any >(null);
 
 
 export const Provider = (props: PropsWithChildren) => {
@@ -8,10 +8,10 @@ export const Provider = (props: PropsWithChildren) => {
 
 
     return (
-        <Context.Provider value={{
+        <LoginCheckContext.Provider value={{
             login, setLogin,
         }}>
             {props.children}
-        </Context.Provider>
+        </LoginCheckContext.Provider>
     )
 }

@@ -1,16 +1,15 @@
 import React, {SyntheticEvent, useContext, useState} from "react";
-import {RegisterForm} from "../Register/RegisterForm";
-import {Context} from "../../../provider/Provider";
+import {LoginCheckContext} from "../../../provider/Provider";
 import Cookies from 'js-cookie';
 import {API_ENDPOINTS} from "../../../api/endpoints";
 
+import '../LoginRegisterForm.css'
+
 export const LoginForm = () => {
 
-
-    const {setLogin} = useContext(Context);
+    const {setLogin} = useContext(LoginCheckContext);
     const [userLogin, setUserLogin] = useState('');
     const [userPassword, setUserPassword] = useState('');
-    const [showRegisterForm, setShowRegisterForm] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
     const sendLoginForm = async (e: SyntheticEvent) => {
@@ -44,57 +43,39 @@ export const LoginForm = () => {
         }
     }
 
-    const handleRegisterClick = () => {
-        setShowRegisterForm(!showRegisterForm);
-    }
 
-
-
-    return <>
-
-        {!showRegisterForm && (
-
-            <form className="login-contener" onSubmit={sendLoginForm}>
+    return (
+        <form className="login-container" onSubmit={sendLoginForm}>
+            <div className="login-box">
                 <h2>Login</h2>
 
+                <div className="login-input">
+                    <label htmlFor="login">
+                        <p>Login</p>
+                        <input
+                            id="login"
+                            type="text"
+                            value={userLogin}
+                            onChange={e => setUserLogin(e.target.value)}
+                        />
+                    </label>
 
-                <div className="login-box">
+                    <label htmlFor="password">
+                        <p>Password</p>
+                        <input
+                            id="password"
+                            type="password"
+                            value={userPassword}
+                            onChange={e => setUserPassword(e.target.value)}
+                        />
+                    </label>
 
-                    <div className="login-box-message">
-                        {errorMessage && <p>{errorMessage}</p>}
-                    </div>
-                    <div className="login-input">
-                        <label htmlFor="login">
-                            <p>Login</p>
-                            <input
-                                id="login"
-                                type="text"
-                                value={userLogin}
-                                onChange={e => setUserLogin(e.target.value)}
-                            />
-                        </label>
-
-
-                        <label htmlFor="password">
-                            <p>Password</p>
-                            <input
-                                id="password"
-                                type="password"
-                                value={userPassword}
-                                onChange={e => setUserPassword(e.target.value)}
-                            />
-                        </label>
-
-                        <button type="submit">Login</button>
-                        <button onClick={handleRegisterClick}>Register</button>
-                    </div>
+                    <button type="submit">Login</button>
                 </div>
-
-
-
-            </form>
-        )}
-        {showRegisterForm && <RegisterForm handleRegisterClick={handleRegisterClick}/>}
-
-    </>
+                <div className="login-box-message">
+                    {errorMessage && <p>{errorMessage}</p>}
+                </div>
+            </div>
+        </form>
+    )
 }

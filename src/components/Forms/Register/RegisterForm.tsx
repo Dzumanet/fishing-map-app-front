@@ -1,56 +1,69 @@
-import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import React, {SyntheticEvent, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import {API_ENDPOINTS} from "../../../api/endpoints";
 
 
+import '../LoginRegisterForm.css'
 
-export const RegisterForm = ({handleRegisterClick}: { handleRegisterClick: () => void }) => {
+export const RegisterForm = ({onClose}: { onClose: () => void }) => {
     const [registerUserName, setRegisterUserName] = useState('');
     const [registerUserPwd, setRegisterUserPwd] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
     const navigate = useNavigate();
 
-    const registerUser = async () => {
-
+    const registerUser = async (e: SyntheticEvent) => {
+        e.preventDefault();
+        setErrorMessage('');
         try {
             const res = await fetch(API_ENDPOINTS.REGISTER, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                credentials: "include",
+                credentials: 'include',
                 body: JSON.stringify({
                     userName: registerUserName,
                     pwd: registerUserPwd,
-                })
-            })
-            const data = await res.json()
+                }),
+            });
+
+            const data = await res.json();
+
             if (data.exists) {
-                setErrorMessage("User already exists");
-            } else if (data.invalidLength) {
-                setErrorMessage("Username is too short");
+                setErrorMessage('User already exists');
+            } else if (data.invalidLoginLength) {
+                setErrorMessage('Username is too short');
+            } else if (data.invalidPwdLength) {
+                setErrorMessage('Password is too short');
             } else if (data.accountCreated) {
-                handleRegisterClick();
-                console.log('Redirecting to login');
-                navigate("/login");
-
+                setRegistrationSuccess(true);
+                navigate('/')
             }
-        } finally {
-            handleRegisterClick();
-            console.log('Redirecting to login');
+        } catch (error) {
+            console.error('Error registering user:', error);
+            setErrorMessage('An error occurred during registration.');
         }
-
-    }
-    const handleBackToLoginClick = () => {
-        handleRegisterClick();
     };
 
-    return <>
-        <form action="" onSubmit={registerUser}>
-            <h2>Register</h2>
-            <div className="register-box">
-                <div className="register-box-message">
-                    {errorMessage && <p> {errorMessage}</p>}
+    if (registrationSuccess) {
+        return (
+            <div className="register-container">
+                <div className="register-box">
+                    <h2>Register</h2>
+
+                    <div className="register-input">
+                        <p>Account successfully created!</p>
+                        <button onClick={onClose}>Login</button>
+                    </div>
                 </div>
+            </div>
+        );
+    }
+
+    return (
+        <form className="register-container" onSubmit={registerUser}>
+            <div className="register-box">
+                <h2>Register</h2>
                 <div className="register-input">
                     <label htmlFor="login">
                         <p>User Name</p>
@@ -58,6 +71,7 @@ export const RegisterForm = ({handleRegisterClick}: { handleRegisterClick: () =>
                     <input
                         id="login"
                         type="text"
+                        value={registerUserName}
                         onChange={(e) => setRegisterUserName(e.target.value)}
                     />
                     <label htmlFor="password">
@@ -65,18 +79,16 @@ export const RegisterForm = ({handleRegisterClick}: { handleRegisterClick: () =>
                     </label>
                     <input
                         id="password"
-
                         type="password"
+                        value={registerUserPwd}
                         onChange={(e) => setRegisterUserPwd(e.target.value)}
                     />
-
-
-                    <button>Create account</button>
-                    <button onClick={handleBackToLoginClick}>Back to Login</button>
+                    <button type="submit">Create account</button>
+                </div>
+                <div className="register-box-message">
+                    {errorMessage && <p>{errorMessage}</p>}
                 </div>
             </div>
         </form>
-    </>
-
-
-}
+    );
+};

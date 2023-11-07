@@ -1,0 +1,37 @@
+.header {
+    height: 12vh;
+    width: 100%;
+    border-bottom: 2px solid black;
+    background-image: url("../../assets/img/river-80394472.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*background-position: center;*/
+}
+
+.login-bar {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: normal;
+    align-items: normal;
+    align-content: normal;
+}
+
+.login-bar-button {
+    display: block;
+    align-self: flex-end;
+    margin: 10px;
+}
+
+.login-bar-button button {
+    margin-left: 10px;
+    font-size: 18px;
+    width: 150px;
+    border-radius: 5px;
+    border: none;
+    padding: 3px 10px;
+}
+
+.login-bar-slogan {
+    margin-left: 40px;
+}

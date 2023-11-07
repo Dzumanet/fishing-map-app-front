@@ -3,11 +3,12 @@ import './App.css';
 import {BrowserRouter} from "react-router-dom";
 import {Header} from "./components/Header/Header";
 import {AppRoutes} from "./routing/AppRoutes";
-import {Context} from "./provider/Provider";
+import {LoginCheckContext} from "./provider/Provider";
 import {API_ENDPOINTS} from "./api/endpoints";
+import {MapOpacityProvider} from "./provider/MapOpacity";
 
 export const App = () => {
-    const {setLogin} = useContext(Context);
+    const {setLogin} = useContext(LoginCheckContext);
 
     useEffect(() => {
         const logIn = async () => {
@@ -29,8 +30,10 @@ export const App = () => {
     return (
         <>
             <BrowserRouter>
+                <MapOpacityProvider>
                 <Header/>
                 <AppRoutes/>
+                </MapOpacityProvider>
             </BrowserRouter>
         </>
     );

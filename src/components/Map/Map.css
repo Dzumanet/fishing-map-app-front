@@ -1,0 +1,8 @@
+.map{
+    height: 85vh;
+    margin: 0 auto;
+}
+
+.leaflet-container {
+    height: 100%;
+}

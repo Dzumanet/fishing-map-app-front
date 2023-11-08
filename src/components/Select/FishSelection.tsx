@@ -1,5 +1,20 @@
-import React from "react";
+import React, {ChangeEvent} from 'react';
 
-export const FishSelection = () => {
-    return null;
+interface FishSelectComponentProps {
+    selectedFish: string | null;
+    handleFishChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+    fishListArray: string[];
 }
+
+export const FishSelectComponent: React.FC<FishSelectComponentProps> = ({ selectedFish, handleFishChange, fishListArray }) => {
+    return (
+        <select value={selectedFish || ""} onChange={handleFishChange}>
+            <option value="">Wybierz rybę</option>
+            {fishListArray.map((fishName) => (
+                <option key={fishName} value={fishName}>
+                    {fishName}
+                </option>
+            ))}
+        </select>
+    );
+};

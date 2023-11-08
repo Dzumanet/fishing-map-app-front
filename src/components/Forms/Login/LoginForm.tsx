@@ -70,7 +70,7 @@ export const LoginForm = () => {
                         />
                     </label>
 
-                    <button type="submit">Login</button>
+                    <button className="login-button" type="submit">Login</button>
                 </div>
                 <div className="login-box-message">
                     {errorMessage && <p>{errorMessage}</p>}

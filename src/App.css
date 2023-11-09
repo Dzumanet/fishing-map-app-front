@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "RobotoRegular";
+    src: url("./fonts/Roboto-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "AgbalumoRegular";
+    src: url("./fonts/Agbalumo-Regular.ttf") format("truetype");
+}
+
+body {
+    font-family: RobotoRegular, sans-serif;
+}

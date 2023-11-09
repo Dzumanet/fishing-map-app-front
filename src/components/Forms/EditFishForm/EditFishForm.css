@@ -1,0 +1,36 @@
+.add-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-form label {
+    margin: 5px 0;
+}
+
+.add-form form input, .add-form form textarea {
+    width: 200px;
+}
+
+tr:nth-child(1) td:first-child {
+    width: 60px;
+}
+
+tr:nth-child(1) td:last-child {
+    width: 130px;
+}
+
+.add-form button, .add-fish-message button {
+    font-size: 20px;
+    padding: 3px 20px;
+    border-radius: 5px;
+    border-color: azure;
+    margin-bottom: 10px;
+}
+
+.add-fish-message {
+    display: flex;
+    margin: 50px auto;
+    flex-direction: column;
+    align-items: center;
+}

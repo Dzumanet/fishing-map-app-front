@@ -83,7 +83,7 @@ export const RegisterForm = ({onClose}: { onClose: () => void }) => {
                         value={registerUserPwd}
                         onChange={(e) => setRegisterUserPwd(e.target.value)}
                     />
-                    <button type="submit">Create account</button>
+                    <button className="register-button" type="submit">Create account</button>
                 </div>
                 <div className="register-box-message">
                     {errorMessage && <p>{errorMessage}</p>}

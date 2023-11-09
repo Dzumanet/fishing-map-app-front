@@ -1,11 +1,15 @@
-import React, {SyntheticEvent} from "react";
+import React, {SyntheticEvent, useEffect} from "react";
+import {useParams} from "react-router-dom";
 import {API_ENDPOINTS} from "../../../api/endpoints";
 import {FishForm} from "../FishForm/FishForm";
-import {useFishManagement} from "../../../hooks/useFishManagement";
 import {CreateFishResponse} from "types";
 
-export const AddFishForm = () => {
-    const isEditing = false;
+import './EditFishForm.css'
+import {useFishManagement} from "../../../hooks/useFishManagement";
+
+export const EditFishForm = () => {
+    const isEditing = true;
+    const {id} = useParams();
     const {
         form,
         setForm,
@@ -18,13 +22,44 @@ export const AddFishForm = () => {
         navigate,
         handleMapClick,
     } = useFishManagement();
+    const updateForm = (key: string, value: number | string) => {
+        setForm({...form, [key]: value});
+    };
 
-    const addFish = async (e: SyntheticEvent) => {
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`${API_ENDPOINTS.GET_ONE_FISH}/${id}`);
+                const data = await response.json();
+                if (response.ok) {
+                    data.catchDateTime = formatCatchDateTime(data.catchDateTime);
+
+                    setForm(data);
+
+                    setMarkerPosition({lat: data.lat, lng: data.lon});
+                } else {
+                    setMessage("Error while fetching fish data");
+                }
+            } catch (error) {
+                setMessage("Error while fetching fish data");
+            }
+        };
+
+        fetchData();
+
+    }, [id]);
+
+    const formatCatchDateTime = (catchDateTime: Date) => {
+        const dateObject = new Date(catchDateTime);
+        return dateObject.toISOString().slice(0, 16);
+    };
+
+    const editFish = async (e: SyntheticEvent) => {
         e.preventDefault();
 
         try {
-            const response = await fetch(API_ENDPOINTS.ADD_FISH, {
-                method: "POST",
+            const response = await fetch(`${API_ENDPOINTS.EDIT_ONE_FISH}/${id}`, {
+                method: "PATCH",
                 headers: {"Content-Type": "application/json"},
                 credentials: "include",
                 body: JSON.stringify({
@@ -37,49 +72,38 @@ export const AddFishForm = () => {
                 }),
             });
 
-            if (response.status === 201) {
+            if (response.status === 200) {
                 const data: CreateFishResponse = await response.json();
                 if (data.success) {
-                    setMessage("Fish added successfully");
+                    setMessage("Fish edited successfully");
                     setShowForm(false);
                 } else {
-                    setMessage("Error adding fish");
+                    setMessage("Error editing fish");
                 }
             } else {
                 setMessage("Server error: " + response.status);
             }
         } catch (error) {
             console.error("Client error:", error);
-            setMessage("Error adding fish");
+            setMessage("Error editing fish");
         }
-    };
-
-    const handleAddAnotherFish = () => {
-        setForm({
-            fishName: '',
-            weight: 0,
-            description: '',
-            catchDateTime: '',
-            lat: 0,
-            lon: 0,
-        });
-        setShowForm(true);
-        setMessage("");
     };
 
     const handleMyFish = () => {
         navigate("/user/user-fish");
     };
+
     const handleMyMap = () => {
         navigate("/");
     };
+
     return (
         <div>
             {showForm ? (
                 <FishForm
                     form={form}
-                    onFormChange={(key, value) => setForm({...form, [key]: value})}
-                    onSubmit={addFish}
+                    onFormChange={(key, value) => updateForm(key, value)}
+                    onSubmit={editFish}
                     onMapClick={handleMapClick}
                     markerPosition={markerPosition}
                     showForm={showForm}
@@ -91,7 +115,6 @@ export const AddFishForm = () => {
                     <p>{message}</p>
                     <button onClick={handleMyMap}>My Map</button>
                     <button onClick={handleMyFish}>My Fish</button>
-                    <button onClick={handleAddAnotherFish}>Add Another Fish</button>
 
                 </div>
             )}

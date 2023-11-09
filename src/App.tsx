@@ -1,12 +1,12 @@
 import React, {useContext, useEffect} from 'react';
-import './App.css';
 import {BrowserRouter} from "react-router-dom";
 import {Header} from "./components/Header/Header";
 import {AppRoutes} from "./routing/AppRoutes";
-import {LoginCheckContext} from "./provider/Provider";
+import {LoginCheckContext} from "./context/Provider";
 import {API_ENDPOINTS} from "./api/endpoints";
-import {MapOpacityProvider} from "./provider/MapOpacity";
+import {MapOpacityProvider} from "./context/MapOpacity";
 
+import './App.css';
 export const App = () => {
     const {setLogin} = useContext(LoginCheckContext);
 

@@ -1,5 +1,5 @@
 import React, {SyntheticEvent, useContext, useState} from "react";
-import {LoginCheckContext} from "../../../provider/Provider";
+import {LoginCheckContext} from "../../../context/Provider";
 import Cookies from 'js-cookie';
 import {API_ENDPOINTS} from "../../../api/endpoints";
 

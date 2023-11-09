@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {FishInterface} from 'types'
 import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
-import {useMapOpacity} from "../../provider/MapOpacity";
+import {useMapOpacity} from "../../context/MapOpacity";
 
 import 'leaflet/dist/leaflet.css'
 import '../../utils/fix-map-icon'

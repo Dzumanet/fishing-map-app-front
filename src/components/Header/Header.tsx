@@ -1,8 +1,8 @@
 import React, {useContext, useState} from "react";
-import {LoginCheckContext} from "../../provider/Provider";
+import {LoginCheckContext} from "../../context/Provider";
 import {LoginForm} from "../Forms/Login/LoginForm";
 import {Navbar} from "../Menu/Navbar";
-import {useMapOpacity} from "../../provider/MapOpacity";
+import {useMapOpacity} from "../../context/MapOpacity";
 import {RegisterForm} from "../Forms/Register/RegisterForm";
 
 import './Header.css'
@@ -33,11 +33,11 @@ export const Header = () => {
             ) : (
                 <div className="login-bar">
                     <div className="login-bar-button">
-                        <button onClick={toggleLoginForm}>
+                        <button onClick={toggleLoginForm} className="custom-button">
                             {isVisibleLogin ? 'Close Login' : 'Login'}
                         </button>
                         {isVisibleLogin && <LoginForm/>}
-                        <button onClick={toggleRegisterForm}>
+                        <button onClick={toggleRegisterForm} className="custom-button">
                             {isVisibleRegister ? 'Close Register' : 'Register'}
                         </button>
                         {isVisibleRegister && <RegisterForm onClose={toggleLoginForm}/>}

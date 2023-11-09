@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {LoginCheckContext} from "../../provider/Provider";
+import {LoginCheckContext} from "../../context/Provider";
 import {Link, useNavigate} from "react-router-dom";
 import Cookies from "js-cookie";
 import {API_ENDPOINTS} from "../../api/endpoints";

@@ -14,4 +14,4 @@ export const Provider = (props: PropsWithChildren) => {
             {props.children}
         </LoginCheckContext.Provider>
     )
-}
+};

@@ -1,0 +1,56 @@
+.single-fish-box {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px;
+    background-color: #f7f7f7; /* Light gray background */
+}
+
+.fish-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333; /* Dark gray text color */
+}
+
+.fish-details {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.fish-details td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.edit-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-link {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.delete-link {
+    background-color: #ff3333; /* Red background for delete button */
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.user-link {
+    color: #007bff;
+    text-decoration: none;
+}

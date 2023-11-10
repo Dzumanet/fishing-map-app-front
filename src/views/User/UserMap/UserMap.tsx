@@ -2,11 +2,12 @@ import React, {ChangeEvent, useEffect, useState} from "react";
 import {UserFishSelection} from "../../../components/Select/UserFishSelection";
 import {FishSelectComponent} from "../../../components/Select/FishSelection";
 import {FishArray} from "../../../utils/FishArray";
-import {FishInterface} from 'types'
+import {FishInterface} from 'types';
 import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
 import {API_ENDPOINTS} from "../../../api/endpoints";
 import {FishPopup} from "../../../components/FishPopup/FishPopup";
 
+import './UserMap.css';
 export const UserMap = () => {
 
     const [fish, setFish] = useState<FishInterface[]>([]);
@@ -51,14 +52,16 @@ export const UserMap = () => {
 
         fetchData();
 
-    }, [selectedOption, allFish]);
+    }, [selectedOption]);
 
 
     return (
         <div className="map">
+            <div className="fish-selection">
             <UserFishSelection selectedOption={selectedOption} handleOptionChange={handleOptionChange}/>
             <FishSelectComponent selectedFish={selectedFish} handleFishChange={handleFishChange}
                                  fishListArray={FishArray}/>
+            </div>
             <MapContainer center={[60.321339, 11.063488]} zoom={13}>
                 {/*<MapClickHandler />*/}
                 <TileLayer

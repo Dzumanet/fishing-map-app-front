@@ -8,6 +8,7 @@ interface FishFormProps {
     form: {
         fishName: string;
         weight: number;
+        length: number;
         description: string;
         catchDateTime: string;
         lat: number;
@@ -37,9 +38,10 @@ export const FishForm = ({
         <div className="add-form">
             <form onSubmit={onSubmit}>
                 <h2>{isEditing ? "Edit Fish" : "Add Fish"}</h2>
-                <label>Fish Name</label>
+                <label htmlFor="fishName">Fish Name</label>
                 <select
                     name="fishName"
+                    id="fishName"
                     value={form.fishName}
                     onChange={(e) => onFormChange("fishName", e.target.value)}
                     required
@@ -52,7 +54,7 @@ export const FishForm = ({
                     ))}
                 </select>
 
-                <label>Weight</label>
+                <label htmlFor="weight">Weight in kg</label>
                 <input
                     type="number"
                     name="weight"
@@ -65,7 +67,21 @@ export const FishForm = ({
                     <span style={{color: "red"}}>Weight must be greater than 0</span>
                 )}
 
-                <label>Description</label>
+                <label htmlFor="length">Length in cm</label>
+                <input
+                    type="number"
+                    name="length"
+                    id="length"
+                    value={form.length}
+                    onChange={(e) => onFormChange("length", Number(e.target.value))}
+                    required
+                />
+                {form.length <= 0 && (
+                    <span style={{color: "red"}}>Weight must be greater than 0</span>
+                )}
+
+
+                <label htmlFor="description">Description</label>
                 <textarea
                     rows={4}
                     name="description"
@@ -73,7 +89,7 @@ export const FishForm = ({
                     value={form.description}
                     onChange={(e) => onFormChange("description", e.target.value)}
                 />
-                <label>Time</label>
+                <label htmlFor="catchDateTime">Time</label>
                 <input
                     type="datetime-local"
                     name="catchDateTime"
@@ -120,4 +136,3 @@ const MapClickHandler = ({onMapClick}: { onMapClick: (e: LeafletMouseEvent) => v
     map.on("click", onMapClick);
     return null;
 };
-

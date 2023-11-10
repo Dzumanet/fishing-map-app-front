@@ -3,7 +3,7 @@ import {LoginCheckContext} from "../../../context/Provider";
 import Cookies from 'js-cookie';
 import {API_ENDPOINTS} from "../../../api/endpoints";
 
-import '../LoginRegisterForm.css'
+import './LoginRegisterForm.css'
 
 export const LoginForm = () => {
 
@@ -41,7 +41,7 @@ export const LoginForm = () => {
             setUserLogin('');
             setUserPassword('');
         }
-    }
+    };
 
 
     return (
@@ -57,6 +57,7 @@ export const LoginForm = () => {
                             type="text"
                             value={userLogin}
                             onChange={e => setUserLogin(e.target.value)}
+                            required
                         />
                     </label>
 
@@ -67,6 +68,7 @@ export const LoginForm = () => {
                             type="password"
                             value={userPassword}
                             onChange={e => setUserPassword(e.target.value)}
+                            required
                         />
                     </label>
 
@@ -78,4 +80,4 @@ export const LoginForm = () => {
             </div>
         </form>
     )
-}
+};

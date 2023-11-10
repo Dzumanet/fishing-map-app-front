@@ -2,8 +2,7 @@ import React, {SyntheticEvent, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {API_ENDPOINTS} from "../../../api/endpoints";
 
-
-import '../LoginRegisterForm.css'
+import '../Login/LoginRegisterForm.css';
 
 export const RegisterForm = ({onClose}: { onClose: () => void }) => {
     const [registerUserName, setRegisterUserName] = useState('');
@@ -16,6 +15,12 @@ export const RegisterForm = ({onClose}: { onClose: () => void }) => {
     const registerUser = async (e: SyntheticEvent) => {
         e.preventDefault();
         setErrorMessage('');
+
+        if (registerUserName.length > 10) {
+            setErrorMessage('Username is too long (max 10 characters)');
+            return;
+        }
+
         try {
             const res = await fetch(API_ENDPOINTS.REGISTER, {
                 method: 'POST',
@@ -73,6 +78,7 @@ export const RegisterForm = ({onClose}: { onClose: () => void }) => {
                         type="text"
                         value={registerUserName}
                         onChange={(e) => setRegisterUserName(e.target.value)}
+                        required
                     />
                     <label htmlFor="password">
                         <p>Password</p>
@@ -82,6 +88,7 @@ export const RegisterForm = ({onClose}: { onClose: () => void }) => {
                         type="password"
                         value={registerUserPwd}
                         onChange={(e) => setRegisterUserPwd(e.target.value)}
+                        required
                     />
                     <button className="register-button" type="submit">Create account</button>
                 </div>

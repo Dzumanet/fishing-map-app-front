@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from "react";
-import {FishInterface} from 'types'
+import {FishInterface} from 'types';
 import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
 import {useMapOpacity} from "../../context/MapOpacity";
-
-import 'leaflet/dist/leaflet.css'
 import '../../utils/fix-map-icon'
-import './Map.css';
 import {API_ENDPOINTS} from "../../api/endpoints";
 import {FishPopup} from "../FishPopup/FishPopup";
+
+import 'leaflet/dist/leaflet.css';
+import './Map.css';
+
+
 
 export const Map = () => {
 
@@ -16,9 +18,9 @@ export const Map = () => {
 
     useEffect(() => {
         (async () => {
-            const res = await fetch(API_ENDPOINTS.FISH_LIST)
-            const data = await res.json()
-            setFish(data)
+            const res = await fetch(API_ENDPOINTS.FISH_LIST);
+            const data = await res.json();
+            setFish(data);
         })()
 
     }, []);

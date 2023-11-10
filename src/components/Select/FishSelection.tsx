@@ -9,7 +9,7 @@ interface FishSelectComponentProps {
 export const FishSelectComponent: React.FC<FishSelectComponentProps> = ({ selectedFish, handleFishChange, fishListArray }) => {
     return (
         <select value={selectedFish || ""} onChange={handleFishChange}>
-            <option value="">Wybierz rybę</option>
+            <option value="">Choose a fish</option>
             {fishListArray.map((fishName) => (
                 <option key={fishName} value={fishName}>
                     {fishName}

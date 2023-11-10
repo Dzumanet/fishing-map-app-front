@@ -1,10 +1,15 @@
 .header {
-    height: 12vh;
+    height: 80px;
     width: 100%;
     background-image: url("../../assets/img/river-80394472.webp");
     background-size: cover;
     background-repeat: no-repeat;
-    /*background-position: center;*/
+}
+
+.header h1 {
+    margin: 0 auto;
+    font-family: AgbalumoRegular, sans-serif;
+    font-size: 2rem;
 }
 
 .login-bar {
@@ -18,24 +23,66 @@
 
 .login-bar-button {
     display: block;
-    align-self: flex-end;
-    margin: 10px;
+    align-self: center;
 }
 
 .login-bar-button button {
-    margin-left: 10px;
-    font-size: 18px;
-    width: 150px;
+    margin: 5px 10px;
+    font-size: 0.8rem;
+    width: 130px;
     border-radius: 5px;
     border: none;
     padding: 3px 10px;
-}
-
-.login-bar-slogan {
-    margin-left: 40px;
-    font-family: AgbalumoRegular, sans-serif;
+    text-transform: uppercase;
 }
 
 .custom-button {
     font-family: RobotoRegular, sans-serif;
+}
+
+
+@media only screen and (min-width: 768px) {
+    .header {
+        height: 100px;
+    }
+
+    .login-bar-button button {
+        margin: 20px 20px;
+        width: 160px;
+
+    }
+
+}
+
+@media only screen and (min-width: 992px) {
+    .header {
+        height: 130px;
+    }
+
+    .header h1 {
+        font-size: 3rem;
+    }
+
+    .login-bar-button button {
+        margin-top: 20px;
+        font-size: 1rem;
+        width: 220px;
+
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .header {
+        height: 180px;
+        background-position: center;
+    }
+
+    .header h1 {
+        font-size: 4rem;
+    }
+
+    .login-bar-button button {
+        margin-top: 40px;
+
+    }
 }

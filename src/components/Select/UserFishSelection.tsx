@@ -8,8 +8,8 @@ interface SelectComponentProps {
 export const UserFishSelection : React.FC<SelectComponentProps> = ({ selectedOption, handleOptionChange }) => {
     return (
         <select value={selectedOption} onChange={handleOptionChange}>
-            <option value="userFish">Moje ryby</option>
-            <option value="allFish">Ryby wszystkich użytkowników</option>
+            <option value="userFish">My Fish</option>
+            <option value="allFish">Fish of all users</option>
         </select>
     );
 };

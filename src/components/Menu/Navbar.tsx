@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import {API_ENDPOINTS} from "../../api/endpoints";
 
 
-import './Navbar.css'
+import './Navbar.css';
 
 export const Navbar = () => {
 
@@ -20,7 +20,7 @@ export const Navbar = () => {
         try {
             await fetch(API_ENDPOINTS.LOGOUT, {
                 method: "GET",
-                headers: { "Content-Type": "application/json" },
+                headers: {"Content-Type": "application/json"},
                 credentials: "include",
             });
             setLogin(false);
@@ -34,35 +34,26 @@ export const Navbar = () => {
 
     return (
         <div className="menu">
+            <div className="logout-button">
+                <button onClick={logOut}>Logout</button>
+            </div>
             <div className="hello-message">
-                <h1>Witaj {UserName}</h1>
+                <h1>Hello {UserName}</h1>
             </div>
             <nav className="nav-bar">
                 <ul>
                     <li>
-                        <Link to="/">Mapa</Link>
+                        <Link to="/">Map</Link>
                     </li>
                     <li>
-                        <Link to="/user/user-fish">Moje Ryby</Link>
+                        <Link to="/user/user-fish">My Fish</Link>
                     </li>
-                    {/*<li>*/}
-                    {/*    <Link to="/user/user-trip">Moje Wyprawy</Link>*/}
-                    {/*</li>*/}
                     <li>
-                        <Link to="/user/add-fish">Dodaj rybe</Link>
+                        <Link to="/user/add-fish">Add Fish</Link>
                     </li>
-                    {/*<li>*/}
-                    {/*    <Link to="/user/add-trip">Dodaj wyprawę</Link>*/}
-                    {/*</li>*/}
-
                 </ul>
             </nav>
-
-            <div className="logout-button">
-                <button onClick={logOut}>Wyloguj</button>
-            </div>
-
         </div>
     )
 
-}
+};

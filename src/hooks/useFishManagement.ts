@@ -6,10 +6,12 @@ export const useFishManagement = () => {
     const [form, setForm] = useState({
         fishName: '',
         weight: 0,
+        length: 0,
         description: '',
         catchDateTime: '',
         lat: 0,
         lon: 0,
+
     });
     const [message, setMessage] = useState('');
     const [showForm, setShowForm] = useState(true);

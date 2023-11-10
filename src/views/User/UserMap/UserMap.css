@@ -1,0 +1,10 @@
+.map {
+    height: calc(100vh - 105px);
+}
+
+.fish-selection {
+    text-align: center;
+    background-color: #B09779;
+    height: 25px;
+
+}

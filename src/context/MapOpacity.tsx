@@ -1,5 +1,3 @@
-
-
 import {createContext, PropsWithChildren, useContext, useState} from "react";
 
 export const MapOpacityContext  = createContext<null | string | any >(null);

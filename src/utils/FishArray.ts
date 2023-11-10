@@ -1,3 +1,19 @@
 export  const FishArray: string[] = [
-
-]
+    "Asp",
+    "Barbel",
+    "Bream",
+    "Burbot",
+    "Carp",
+    "Chub",
+    "Crucian",
+    "Eel",
+    "Grayling",
+    "Perch",
+    "Pike",
+    "Roach",
+    "Ruff",
+    "Salmon",
+    "Trout",
+    "Whitefish",
+    "Zander"
+];

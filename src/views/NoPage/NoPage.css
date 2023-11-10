@@ -1,0 +1,9 @@
+.no-page {
+display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.no-page h1 {
+    color: red;
+}

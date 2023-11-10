@@ -7,7 +7,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
-    background-image: url("../../assets/img/fishing-boat-5541327_640.webp");
+    background-image: url("../../../assets/img/fishing-boat-5541327_640.webp");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -37,17 +37,34 @@
 }
 
 .login-input input,
-.register-input input
- {
+.register-input input {
     font-size: 20px;
 }
 
 .login-box .login-input button,
-.register-box .register-input button{
-    margin: 30px auto;
+.register-box .register-input button {
+    margin: 30px auto 0;
 }
 
-.login-box-message, .register-box-message {
-    margin-bottom: 10px;
+.login-box-message p, .register-box-message p {
+    margin-bottom: 30px;
     color: red;
+}
+
+@media only screen and (min-width: 600px) {
+
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 992px) {
+
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+
 }

@@ -5,7 +5,7 @@ import {Navbar} from "../Menu/Navbar";
 import {useMapOpacity} from "../../context/MapOpacity";
 import {RegisterForm} from "../Forms/Register/RegisterForm";
 
-import './Header.css'
+import './Header.css';
 
 export const Header = () => {
     const {login} = useContext(LoginCheckContext);
@@ -32,6 +32,7 @@ export const Header = () => {
                 <Navbar/>
             ) : (
                 <div className="login-bar">
+                    <h1>Welcome on Fishin Map</h1>
                     <div className="login-bar-button">
                         <button onClick={toggleLoginForm} className="custom-button">
                             {isVisibleLogin ? 'Close Login' : 'Login'}
@@ -42,11 +43,9 @@ export const Header = () => {
                         </button>
                         {isVisibleRegister && <RegisterForm onClose={toggleLoginForm}/>}
                     </div>
-                    <div className="login-bar-slogan">
-                        <h1>Welcome on Fishin Map</h1>
-                    </div>
+
                 </div>
             )}
         </div>
     );
-}
+};

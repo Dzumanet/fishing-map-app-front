@@ -30,13 +30,13 @@ export const AddFishForm = () => {
                 body: JSON.stringify({
                     fishName: form.fishName,
                     weight: form.weight,
+                    length: form.length,
                     description: form.description,
                     catchDateTime: form.catchDateTime,
                     lat: form.lat,
                     lon: form.lon,
                 }),
             });
-
             if (response.status === 201) {
                 const data: CreateFishResponse = await response.json();
                 if (data.success) {
@@ -58,6 +58,7 @@ export const AddFishForm = () => {
         setForm({
             fishName: '',
             weight: 0,
+            length: 0,
             description: '',
             catchDateTime: '',
             lat: 0,

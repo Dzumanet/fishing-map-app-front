@@ -3,9 +3,9 @@ import {useParams} from "react-router-dom";
 import {API_ENDPOINTS} from "../../../api/endpoints";
 import {FishForm} from "../FishForm/FishForm";
 import {CreateFishResponse} from "types";
-
-import './EditFishForm.css'
 import {useFishManagement} from "../../../hooks/useFishManagement";
+
+import '../FishForm/FishForm.css'
 
 export const EditFishForm = () => {
     const isEditing = true;
@@ -65,6 +65,7 @@ export const EditFishForm = () => {
                 body: JSON.stringify({
                     fishName: form.fishName,
                     weight: form.weight,
+                    length: form.length,
                     description: form.description,
                     catchDateTime: form.catchDateTime,
                     lat: form.lat,

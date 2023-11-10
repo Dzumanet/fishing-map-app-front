@@ -1,0 +1,48 @@
+.fish-container {
+    text-align: center;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+
+}
+
+.fish-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.fish-list a {
+    text-decoration: none;
+    color: black;
+}
+
+.fish-box {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.fish-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.fish-box h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.fish-box p {
+    font-size: 14px;
+    color: #888;
+}
+.sort-buttons button {
+    margin-right: 5px;
+}
